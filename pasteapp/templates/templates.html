@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+        <body>
+		<form method="post" action="">
+		{% csrf_token %}
+		<label>Name:</label>
+		<input type="text" placeholder="name" name="name">
+		<label>Content:</label>
+		<input type="textarea" name="content">
+		<label>URL:</label>
+		<input type="text" name="url">
+		<label>Uploader:</label>
+		<input type="text" name="uploader">
+		<input type="submit" value="Submit" name="submit">
+
+                {% if Paste_list %}
+                <ul>
+                {% for p in Paste_list %}
+                <li><a href="/pasteapp/paste/{{ p.url }}/">Name: {{p.name}} Content: {{p.content}}</a></li>
+                {% endfor %}
+                </ul>
+                {% else %}
+                <p>no pastes available.</p>
+                {% endif %}
+        </body> 
+</html>
+
